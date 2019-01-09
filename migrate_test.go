@@ -132,10 +132,10 @@ func (s *SqliteMigrateSuite) TestFileMigrateWithSubfolder(c *C) {
 		IncludeSubDir: true,
 	}
 
-	// Executes two migrations
+	// Executes  migrations
 	n, err := Exec(s.Db, "sqlite3", migrations, Up)
 	c.Assert(err, IsNil)
-	c.Assert(n, Equals, 4)
+	c.Assert(n, Equals, 6)
 
 	// Has data
 	id, err := s.DbMap.SelectInt("SELECT id FROM people")
@@ -154,7 +154,7 @@ func (s *SqliteMigrateSuite) TestFileMigrateWithSubfolderAndSkip(c *C) {
 	// Executes two migrations
 	n, err := Exec(s.Db, "sqlite3", migrations, Up)
 	c.Assert(err, IsNil)
-	c.Assert(n, Equals, 3)
+	c.Assert(n, Equals, 5)
 
 	// Has data
 	id, err := s.DbMap.SelectInt("SELECT id FROM people")

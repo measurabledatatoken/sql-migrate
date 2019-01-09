@@ -229,7 +229,7 @@ func findFilesourceMigrations(dir string, includeSubDir bool, foldersToSkip []st
 			return nil, fmt.Errorf("Error while opening %s: %s", filePath, err)
 		}
 
-		migration, err := ParseMigration(file.Name(), file)
+		migration, err := ParseMigration(filepath.Base(file.Name()), file)
 		if err != nil {
 			return nil, fmt.Errorf("Error while parsing %s: %s", file.Name(), err)
 		}
